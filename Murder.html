@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>مرحباً بك في لعبة التحقيق</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Cairo:wght@400;700&display=swap');
+
+  body {
+    margin: 0;
+    font-family: 'Cairo', sans-serif;
+    background: linear-gradient(to bottom, #000428, #004e92);
+    color: white;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    text-align: center;
+    padding: 20px;
+  }
+
+  h1 {
+    font-size: 3em;
+    margin-bottom: 0.2em;
+    font-weight: 700;
+  }
+
+  p {
+    font-size: 1.3em;
+    margin-bottom: 2em;
+    color: #a0c4ff;
+  }
+
+  button {
+    background-color: #00c9ff;
+    color: black;
+    border: none;
+    padding: 15px 45px;
+    font-size: 1.3em;
+    border-radius: 12px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    box-shadow: 0 4px 10px rgba(0, 201, 255, 0.3);
+  }
+
+  button:hover {
+    background-color: #00aaff;
+  }
+</style>
+</head>
+<body>
+
+  <h1>مرحباً بك في لعبة التحقيق</h1>
+  <p>أنت المحقق. هل أنت مستعد لكشف أسرار وقصص الجرائم؟</p>
+  <p style="font-family: 'Cairo', sans-serif; font-size: 1.2em; color: #00c9ff;">
+  تابعني على حسابي تيك توك  
+  <a href="https://www.tiktok.com/@1nolos" target="_blank" 
+     style="color: #00ffcc; text-decoration: none; font-weight: bold;">
+      (اضغط هنا
+  <button id="startBtn">ابدأ اللعبة</button>
+
+<script>
+  document.getElementById('startBtn').addEventListener('click', () => {
+    window.location.href = 'stories.html'; // هنا يودي لصفحة القصص
+  });
+</script>
+
+</body>
+</html>

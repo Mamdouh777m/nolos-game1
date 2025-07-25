@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>اسم صفحتك</title>
+
+  <!-- رابط خط Cairo من Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;700&display=swap" rel="stylesheet" />
+
+  <!-- تنسيق الخط على الصفحة -->
+  <style>
+    body {
+      font-family: 'Cairo', sans-serif;
+    }
+  </style>
+</head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>نولوس - ألعاب تفاعلية</title>
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      font-family: 'Cairo', sans-serif;
+    }
+
+    body {
+      background: linear-gradient(to bottom, #000428, #004e92);
+      color: white;
+      text-align: center;
+      padding: 40px 20px;
+    }
+
+    h1 {
+      font-size: 3em;
+      margin-bottom: 10px;
+      animation: fadeIn 2s ease-in-out;
+    }
+
+    p {
+      font-size: 1.2em;
+      margin-bottom: 30px;
+      opacity: 0.9;
+    }
+
+    .arrow {
+      font-size: 3em;
+      animation: bounce 2s infinite;
+      margin-bottom: 20px;
+    }
+
+    .games {
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+      align-items: center;
+    }
+
+    .game {
+      background: rgba(255, 255, 255, 0.1);
+      padding: 20px;
+      border-radius: 15px;
+      width: 90%;
+      max-width: 400px;
+      transition: 0.3s;
+    }
+
+    .game:hover {
+      background: rgba(255, 255, 255, 0.2);
+      transform: scale(1.03);
+    }
+
+    .game-title {
+      font-size: 1.5em;
+      margin-bottom: 10px;
+    }
+
+    .game a {
+      display: inline-block;
+      padding: 10px 20px;
+      background: #00c9ff;
+      color: black;
+      text-decoration: none;
+      border-radius: 10px;
+      font-weight: bold;
+      margin-top: 10px;
+    }
+
+    @keyframes bounce {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(-10px); }
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(-30px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+  </style>
+</head>
+<body>
+  <h1>مرحباً بك نورتنا 🎉</h1>
+  <p>استعد لألعاب ممتعة ومليئة بالتحدي 😎</>
+  <div class="arrow">⬇️</div>
+<p style="font-family: 'Cairo', sans-serif; font-size: 1.2em; color: #00c9ff;">
+  تابعني على حسابي تيك توك  
+  <a href="https://www.tiktok.com/@1nolos" target="_blank" 
+     style="color: #00ffcc; text-decoration: none; font-weight: bold;">
+      (اضغط هنا
+  </a>
+</p>
+  <div class="games">
+    <div class="game">
+      <div class="game-title">🧠 أسئلة ثقافية</div>
+      <a href="game1.html">اضغط هنا للذهاب</a>
+    </div>
+
+    <div class="game">
+      <div class="game-title">😂 نكتة عشوائية </div>
+      <a href="funny.html">اضغط هنا للذهاب</a>
+    </div>
+
+    <div class="game">
+      <div class="game-title">🕵️‍♂️ خمن الشخصية</div>
+      <a href="guess_character.html">اضغط هنا للذهاب</a>
+    </div>
+
+    <div class="game">
+      <div class="game-title">🩸 جريمة قتل وتحقيق</div>
+      <a href="Murder.html">اضغط هنا للذهاب
+    
+      </a>
+    </div>
+  </div>
+</body>
+</html>

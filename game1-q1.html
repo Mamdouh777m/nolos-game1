@@ -1,0 +1,301 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>اسم صفحتك</title>
+
+  <!-- رابط خط Cairo من Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;700&display=swap" rel="stylesheet" />
+
+  <!-- تنسيق الخط على الصفحة -->
+  <style>
+    body {
+      font-family: 'Cairo', sans-serif;
+    }
+  </style>
+</head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>اختبار الثقافة العامة</title>
+  
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Cairo', sans-serif;
+      background: linear-gradient(to bottom, #000428, #004e92);
+      color: white;
+      text-align: center;
+      padding: 40px 20px;
+      overflow-x: hidden;
+      position: relative;
+    }
+    h1 {
+      font-size: 2em;
+      margin-bottom: 20px;
+    }
+    .question-box {
+      animation: fadeIn 0.5s forwards;
+    }
+    .question {
+      font-size: 1.5em;
+      margin-bottom: 25px;
+    }
+    .options {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      max-width: 400px;
+      margin: auto;
+    }
+    .option-btn {
+      padding: 8px 12px;
+      background-color: #00c9ff;
+      color: black;
+      border: none;
+      border-radius: 10px;
+      font-size: 0.9em;
+      cursor: pointer;
+      transition: 0.3s;
+    }
+    .option-btn:hover {
+      background-color: #00aaff;
+    }
+    .option-btn.selected {
+      background-color: #ffdd00;
+      font-weight: bold;
+    }
+    #confirm-btn {
+      margin-top: 20px;
+      padding: 10px 20px;
+      font-size: 1em;
+      background-color: #28d;
+      color: white;
+      border: none;
+      border-radius: 10px;
+      cursor: pointer;
+      display: none;
+    }
+    .fade-out {
+      animation: fadeOut 0.4s forwards;
+    }
+    @keyframes fadeOut {
+      to { opacity: 0; transform: translateY(10px); }
+    }
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(10px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+    @keyframes smoke {
+      0% { opacity: 0; transform: translateY(20px) scale(0.9); }
+      50% { opacity: 1; transform: translateY(-10px) scale(1.02); }
+      100% { opacity: 0; transform: translateY(-50px) scale(1.1); }
+    }
+    .smoke {
+      position: absolute;
+      top: 0;
+      left: 50%;
+      width: 80px;
+      height: 80px;
+      background: radial-gradient(circle, rgba(255,255,255,0.3) 0%, transparent 80%);
+      animation: smoke 1.5s ease-in-out forwards;
+      pointer-events: none;
+      z-index: 10;
+      transform: translateX(-50%);
+    }
+    #smoke-effect {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 80px;
+      pointer-events: none;
+      z-index: 5;
+    }
+    #result {
+      display: none;
+      font-size: 1.2em;
+      margin-top: 30px;
+      text-align: right;
+      max-width: 600px;
+      margin-left: auto;
+      margin-right: auto;
+      direction: rtl;
+    }
+    .restart-btn {
+      margin-top: 20px;
+      background-color: #ffcc00;
+      cursor: pointer;
+      border: none;
+      padding: 10px 15px;
+      border-radius: 10px;
+      font-size: 1em;
+    }
+    .mistake-list {
+      background: rgba(255,255,255,0.1);
+      border-radius: 10px;
+      padding: 15px;
+      margin-top: 20px;
+      text-align: right;
+    }
+    .mistake-item {
+      margin-bottom: 12px;
+      border-bottom: 1px solid rgba(255,255,255,0.2);
+      padding-bottom: 10px;
+    }
+    .correct-answer {
+      color: #0f0;
+      font-weight: bold;
+    }
+  </style>
+</head>
+<body>
+  <h1>اختبار الثقافة العامة 🌍</h1>
+  <div id="smoke-effect"></div>
+  <div id="quiz-container"></div>
+  <button id="confirm-btn" onclick="nextQuestion()">هل أنت متأكد؟</button>
+  <div id="result"></div>
+  <p style="font-family: 'Cairo', sans-serif; font-size: 1.2em; color: #00c9ff;">
+  تابعني على حسابي تيك توك  
+  <a href="https://www.tiktok.com/@1nolos" target="_blank" 
+     style="color: #00ffcc; text-decoration: none; font-weight: bold;">
+      (اضغط هنا
+
+  <script>
+    const questions = [
+      { text: "من هو أول نبي على وجه الأرض؟", answers: ["محمد ﷺ", "نوح", "إبراهيم", "آدم"], correct: 3 },
+      { text: "ما هو أكبر كوكب في النظام الشمسي؟", answers: ["زحل", "المشتري", "الأرض", "المريخ"], correct: 1 },
+      { text: "في أي سنة وقعت معركة بدر؟", answers: ["624 ميلادية", "632 ميلادية", "610 ميلادية", "630 ميلادية"], correct: 0 },
+      { text: "ما هي عاصمة فرنسا؟", answers: ["برلين", "باريس", "روما", "مدريد"], correct: 1 },
+      { text: "من هو مكتشف قانون الجاذبية؟", answers: ["ألبرت أينشتاين", "نيوتن", "جاليليو", "توماس إديسون"], correct: 1 },
+      { text: "كم عدد لاعبي كرة القدم في الفريق الواحد؟", answers: ["7", "9", "11", "13"], correct: 2 },
+      { text: "ما هو العنصر الكيميائي الذي يرمز له بـ O؟", answers: ["الذهب", "الأكسجين", "الفضة", "الهيدروجين"], correct: 1 },
+      { text: "ما اسم القارة التي تقع فيها مصر؟", answers: ["آسيا", "أفريقيا", "أوروبا", "أمريكا"], correct: 1 },
+      { text: "من هو مؤلف رواية 'مئة عام من العزلة'؟", answers: ["غابرييل غارسيا ماركيز", "نجيب محفوظ", "أرنست همنغواي", "تولستوي"], correct: 0 },
+      { text: "ما هو اسم أسرع حيوان بري؟", answers: ["الفهد", "الأسد", "الغزال", "النمر"], correct: 0 },
+      { text: "ما هي وحدة قياس شدة التيار الكهربائي؟", answers: ["فولت", "أمبير", "واط", "أوم"], correct: 1 },
+      { text: "من هو العالم الذي طور نظرية النسبية؟", answers: ["نيوتن", "جاليليو", "ألبرت أينشتاين", "ماكسويل"], correct: 2 },
+      { text: "في أي قارة تقع دولة الأرجنتين؟", answers: ["أفريقيا", "أمريكا الجنوبية", "آسيا", "أوروبا"], correct: 1 },
+      { text: "ما هو اسم البحيرة الأكبر في العالم؟", answers: ["بحيرة سوبيريور", "بحيرة فيكتوريا", "بحيرة كаспين", "بحيرة ميشيغان"], correct: 2 },
+      { text: "كم عدد درجات الحرارة التي تغلي عندها الماء؟", answers: ["100 درجة مئوية", "90 درجة مئوية", "80 درجة مئوية", "120 درجة مئوية"], correct: 0 },
+      { text: "من هو أول رائد فضاء؟", answers: ["نيل أرمسترونج", "يووري جاجارين", "باز ألدرين", "كريس هادفيلد"], correct: 1 },
+      { text: "ما هو أصل لعبة الشطرنج؟", answers: ["الصين", "الهند", "مصر", "اليونان"], correct: 1 },
+      { text: "ما اسم أكبر محيط في العالم؟", answers: ["المحيط الأطلسي", "المحيط الهندي", "المحيط الهادئ", "المحيط المتجمد الشمالي"], correct: 2 },
+      { text: "ما هو الحيوان الذي يطلق عليه ملك الغابة؟", answers: ["النمر", "الأسد", "الفهد", "الدب"], correct: 1 },
+      { text: "في أي سنة تأسست الأمم المتحدة؟", answers: ["1945", "1950", "1939", "1960"], correct: 0 },
+    ];
+
+    let current = 0;
+    let score = 0;
+    let selectedAnswer = null;
+    const mistakes = [];
+
+    const container = document.getElementById("quiz-container");
+    const resultDiv = document.getElementById("result");
+    const confirmBtn = document.getElementById("confirm-btn");
+    const smokeContainer = document.getElementById("smoke-effect");
+
+    function loadQuestion(index) {
+      selectedAnswer = null;
+      confirmBtn.style.display = "none";
+      smokeContainer.innerHTML = '';
+      container.innerHTML = '';
+
+      const q = questions[index];
+      const box = document.createElement('div');
+      box.className = "question-box";
+
+      box.innerHTML = `
+        <div class="question">السؤال ${index + 1}: ${q.text}</div>
+        <div class="options">
+          ${q.answers.map((a, i) => `<button class="option-btn" onclick="selectAnswer(${i}, this)">${a}</button>`).join('')}
+        </div>
+      `;
+
+      container.appendChild(box);
+    }
+
+    function selectAnswer(i, el) {
+      selectedAnswer = i;
+
+      document.querySelectorAll('.option-btn').forEach(btn => btn.classList.remove('selected'));
+      el.classList.add('selected');
+      confirmBtn.style.display = "inline-block";
+    }
+
+    function nextQuestion() {
+      if (selectedAnswer === null) return;
+
+      if (selectedAnswer === questions[current].correct) {
+        score++;
+      } else {
+        // سجل السؤال الخطأ
+        mistakes.push({
+          question: questions[current].text,
+          yourAnswer: questions[current].answers[selectedAnswer],
+          correctAnswer: questions[current].answers[questions[current].correct]
+        });
+      }
+
+      const currentBox = document.querySelector('.question-box');
+      currentBox.classList.add('fade-out');
+
+      const smoke = document.createElement('div');
+      smoke.classList.add('smoke');
+      smokeContainer.appendChild(smoke);
+      setTimeout(() => smoke.remove(), 1500);
+
+      setTimeout(() => {
+        current++;
+        if (current < questions.length) {
+          loadQuestion(current);
+        } else {
+          showResult();
+        }
+      }, 500);
+    }
+
+    function showResult() {
+      container.innerHTML = '';
+      confirmBtn.style.display = 'none';
+
+      const percent = Math.round((score / questions.length) * 100);
+      let mistakesHTML = '';
+
+      if (mistakes.length > 0) {
+        mistakesHTML = `<div class="mistake-list"><h3>الأسئلة التي أخطأت فيها:</h3>`;
+        mistakes.forEach(mistake => {
+          mistakesHTML += `
+            <div class="mistake-item">
+              <p><strong>السؤال:</strong> ${mistake.question}</p>
+              <p><strong>إجابتك:</strong> ${mistake.yourAnswer}</p>
+              <p><strong>الإجابة الصحيحة:</strong> <span class="correct-answer">${mistake.correctAnswer}</span></p>
+            </div>
+          `;
+        });
+        mistakesHTML += `</div>`;
+      }
+
+      resultDiv.style.display = 'block';
+      resultDiv.innerHTML = `
+        ✅ لقد أكملت الاختبار!<br>
+        نتيجتك: <strong>${percent}%</strong><br>
+        ${mistakesHTML}
+        <button class="restart-btn" onclick="restart()">إعادة المحاولة 🔁</button>
+      `;
+    }
+
+    function restart() {
+      current = 0;
+      score = 0;
+      selectedAnswer = null;
+      mistakes.length = 0;
+      resultDiv.style.display = 'none';
+      loadQuestion(current);
+    }
+
+    loadQuestion(current);
+  </script>
+</body>
+</html>

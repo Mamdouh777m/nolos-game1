@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>لعبة تخمين شخصية 🕵</title>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Cairo:wght@400;700&display=swap');
+
+    body {
+      margin: 0;
+      font-family: 'Cairo', sans-serif;
+      background: linear-gradient(to bottom, #000428, #004e92);
+      color: white;
+      text-align: center;
+      padding: 60px 20px;
+    }
+
+    h1 {
+      font-size: 2.5em;
+      margin-bottom: 20px;
+    }
+
+    p {
+      font-size: 1.2em;
+      margin-bottom: 40px;
+    }
+
+    .start-button {
+      padding: 15px 30px;
+      font-size: 1.2em;
+      background-color: #00c9ff;
+      color: black;
+      border: none;
+      border-radius: 12px;
+      cursor: pointer;
+      transition: 0.3s;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+    }
+
+    .start-button:hover {
+      background-color: #00aaff;
+    }
+
+    .emoji {
+      font-size: 2.2em;
+      margin-bottom: 15px;
+    }
+  </style>
+</head>
+<body>
+  <div class="emoji">🕵️‍♂️🤖🎮</div>
+  <h1>أهلاً بك في لعبة تخمين شخصية</h1>
+  <p>لعبة بسيطة، ممتعة، وتخمن شخصيتك أو شخصية تفكر فيها! مستعد؟ 😏</p>
+  <p style="font-family: 'Cairo', sans-serif; font-size: 1.2em; color: #00c9ff;">
+  تابعني على حسابي تيك توك  
+  <a href="https://www.tiktok.com/@1nolos" target="_blank" 
+     style="color: #00ffcc; text-decoration: none; font-weight: bold;">
+      (اضغط هنا
+  <button class="start-button" onclick="startGame()">ابدأ اللعبة الآن</button>
+
+  <script>
+    function startGame() {
+      window.location.href = "guess.html"; // تأكد أن صفحة التخمين اسمها guess.html
+    }
+  </script>
+</body>
+</html>

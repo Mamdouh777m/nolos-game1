@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>لعبة تخمين الشخصية 🕵️</title>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Cairo:wght@400;700&display=swap');
+
+    body {
+      font-family: 'Cairo', sans-serif;
+      background: linear-gradient(to bottom, #000428, #004e92);
+      color: white;
+      text-align: center;
+      padding: 40px 20px;
+      margin: 0;
+    }
+
+    h1 {
+      font-size: 2em;
+      margin-bottom: 30px;
+    }
+
+    #question {
+      font-size: 1.4em;
+      margin-bottom: 20px;
+    }
+
+    .answers {
+      display: flex;
+      flex-direction: column;
+      gap: 15px;
+      max-width: 400px;
+      margin: auto;
+    }
+
+    .btn {
+      padding: 12px;
+      background-color: #00c9ff;
+      color: black;
+      border: none;
+      border-radius: 10px;
+      font-size: 1em;
+      cursor: pointer;
+      transition: 0.3s;
+    }
+
+    .btn:hover {
+      background-color: #00aaff;
+    }
+
+    #result {
+      margin-top: 40px;
+      font-size: 1.2em;
+      display: none;
+    }
+
+    .emoji {
+      font-size: 2em;
+      margin-bottom: 10px;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="emoji">🧠</div>
+  <h1>تخمين شخصيتك مثل أكيناتور 🎯</h1>
+  <div id="question">هل الشخصية حقيقية؟</div>
+
+  <div class="answers">
+    <button class="btn" onclick="answer('نعم')">✅ نعم</button>
+    <button class="btn" onclick="answer('لا')">❌ لا</button>
+    <button class="btn" onclick="answer('لا أعلم')">❓ لا أعلم</button>
+    <button class="btn" onclick="answer('ربما')">🔁 ربما</button>
+    <button class="btn" onclick="answer('ربما لا')">❗ ربما لا</button>
+  </div>
+<p style="font-family: 'Cairo', sans-serif; font-size: 1.2em; color: #00c9ff;">
+  تابعني على حسابي تيك توك  
+  <a href="https://www.tiktok.com/@1nolos" target="_blank" 
+     style="color: #00ffcc; text-decoration: none; font-weight: bold;">
+      (اضغط هنا
+  <div id="result"></div>
+
+  <script>
+    const questions = [
+      "هل الشخصية حقيقية؟",
+      "هل هي مشهورة؟",
+      "هل تظهر على اليوتيوب؟",
+      "هل هي أنثى؟",
+      "هل هي شخصية كرتونية؟",
+      "هل هي من عالم الأنمي؟",
+      "هل تتحدث اللغة العربية؟",
+      "هل هي ممثل؟",
+      "هل يعيش في السعودية؟",
+      "هل يغني؟",
+      "هل يلعب ألعاب فيديو؟",
+      "هل هو معروف على تيك توك؟",
+      "هل يلبس نظارة؟",
+      "هل الشخصية من التاريخ؟",
+      "هل لها لحية؟",
+      "هل الشخصية في مجال التعليم؟",
+      "هل تستخدم السوشيال ميديا؟",
+      "هل الشخصية صغيرة في السن؟",
+      "هل ظهرت في أفلام كرتون؟",
+      "هل الشخصية خيالية؟",
+      "هل يحب الناس هذه الشخصية؟"
+    ];
+
+    let current = 0;
+    const answers = [];
+
+    function answer(choice) {
+      answers.push({ question: questions[current], answer: choice });
+      current++;
+      if (current < questions.length) {
+        document.getElementById("question").textContent = questions[current];
+      } else {
+        showResult();
+      }
+    }
+
+    function showResult() {
+      document.getElementById("question").style.display = "none";
+      document.querySelector(".answers").style.display = "none";
+      const resultDiv = document.getElementById("result");
+      resultDiv.style.display = "block";
+
+      resultDiv.innerHTML = `
+        🤔 تم جمع معلومات كافية...<br><br>
+        أعتقد أنك تفكر في شخصية مشهورة!<br>
+        <strong>لكن خلينا نطور ذكاء اللعبة أكثر 🔥</strong><br><br>
+        <button class="btn" onclick="restart()">إعادة المحاولة 🔁</button>
+      `;
+    }
+
+    function restart() {
+      current = 0;
+      answers.length = 0;
+      document.getElementById("question").style.display = "block";
+      document.querySelector(".answers").style.display = "flex";
+      document.getElementById("question").textContent = questions[0];
+      document.getElementById("result").style.display = "none";
+    }
+  </script>
+</body>
+</html>
